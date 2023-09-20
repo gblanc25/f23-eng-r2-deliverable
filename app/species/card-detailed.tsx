@@ -31,7 +31,9 @@ export default function AddSpeciesDialog({ species }: { species: Species }) {
         </DialogHeader>
         <DialogDescription>
           <div className="relative h-40 w-full">
-            <Image src={species.image} alt={species.scientific_name} fill style={{ objectFit: "contain" }} />
+            {species.image && (
+              <Image src={species.image} alt={species.scientific_name} fill style={{ objectFit: "contain" }} />
+            )}
           </div>
         </DialogDescription>
         <DialogDescription>

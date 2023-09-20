@@ -59,12 +59,14 @@ export default function EditSpecies({ species }: { species: Species }) {
 
   const pop = species.total_population ? species.total_population : 1;
 
+  const im = species.image ? species.image : undefined;
+
   const defaultValues: Partial<FormData> = {
     kingdom: "Animalia",
     total_population: pop,
     scientific_name: species.scientific_name,
     common_name: species.common_name,
-    image: species.image,
+    image: im,
     description: species.description,
   };
 
@@ -147,7 +149,6 @@ export default function EditSpecies({ species }: { species: Species }) {
                 )}
               />
               <FormField
-                control={form.control}
                 name="common_name"
                 render={({ field }) => (
                   // We must extract value from field and convert a potential defaultValue of `null` to "" because inputs can't handle null values: https://github.com/orgs/react-hook-form/discussions/4091
@@ -191,7 +192,6 @@ export default function EditSpecies({ species }: { species: Species }) {
                 )}
               />
               <FormField
-                control={form.control}
                 name="total_population"
                 render={({ field }) => (
                   <FormItem>
@@ -204,7 +204,6 @@ export default function EditSpecies({ species }: { species: Species }) {
                 )}
               />
               <FormField
-                control={form.control}
                 name="image"
                 render={({ field }) => (
                   <FormItem>
@@ -217,7 +216,6 @@ export default function EditSpecies({ species }: { species: Species }) {
                 )}
               />
               <FormField
-                control={form.control}
                 name="description"
                 render={({ field }) => {
                   // We must extract value from field and convert a potential defaultValue of `null` to "" because textareas can't handle null values: https://github.com/orgs/react-hook-form/discussions/4091

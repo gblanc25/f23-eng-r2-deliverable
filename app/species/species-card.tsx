@@ -17,6 +17,8 @@ if (!session) {
   redirect("/");
 }
 
+const id = session.user.id ? session.user.id : null;
+
 export default function SpeciesCard(species: Species) {
   return (
     <div className="min-w-72 m-4 w-72 flex-none rounded border-2 p-3 shadow">
@@ -29,7 +31,7 @@ export default function SpeciesCard(species: Species) {
       <h4 className="text-lg font-light italic">{species.scientific_name}</h4>
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
       {/* Replace with detailed view */}
-      <DetailedView species={species} /> {species.author == session.user.id && <EditSpecies species={species} />}
+      <DetailedView species={species} /> {species.author == id && <EditSpecies species={species} />}
     </div>
   );
 }
