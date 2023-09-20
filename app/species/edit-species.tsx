@@ -196,9 +196,7 @@ export default function EditSpecies({ species }: { species: Species }) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Total Population</FormLabel>
-                    <FormControl>
-                      <Input style={{ color: "green" }} {...field} />
-                    </FormControl>
+                    <Input type="number" style={{ color: "green" }} {...field} />
                     <FormMessage />
                   </FormItem>
                 )}
