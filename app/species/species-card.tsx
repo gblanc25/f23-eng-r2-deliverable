@@ -7,17 +7,17 @@ import EditSpecies from "./edit-species";
 
 type Species = Database["public"]["Tables"]["species"]["Row"];
 
-const supabase = createServerSupabaseClient();
-const {
-  data: { session },
-} = await supabase.auth.getSession();
+export default async function SpeciesCard(species: Species) {
+  const supabase = createServerSupabaseClient();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-if (!session) {
-  // this is a protected route - only users who are signed in can view this route
-  redirect("/");
-}
+  if (!session) {
+    // this is a protected route - only users who are signed in can view this route
+    redirect("/");
+  }
 
-export default function SpeciesCard(species: Species) {
   return (
     <div className="min-w-72 m-4 w-72 flex-none rounded border-2 p-3 shadow">
       {species.image && (
@@ -29,7 +29,8 @@ export default function SpeciesCard(species: Species) {
       <h4 className="text-lg font-light italic">{species.scientific_name}</h4>
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
       {/* Replace with detailed view */}
-      <DetailedView species={species} /> {species.author == session.user.id && <EditSpecies species={species} />}
+      <DetailedView species={species} />{" "}
+      {String(species.author) == String(session.user.id) && <EditSpecies species={species} />}
     </div>
   );
 }
