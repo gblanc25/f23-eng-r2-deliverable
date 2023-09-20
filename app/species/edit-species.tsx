@@ -97,7 +97,7 @@ export default function EditSpecies({ species }: { species: Species }) {
         total_population: input.total_population,
         image: input.image,
       })
-      .match({ author: 4, id: species.id });
+      .match({ author: session.user.id, id: species.id });
 
     if (error) {
       return toast({
