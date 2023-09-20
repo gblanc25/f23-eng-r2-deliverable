@@ -1,12 +1,9 @@
 import type { Database } from "@/lib/schema";
-import { createServerSupabaseClient } from "@/lib/server-utils";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 import DetailedView from "./card-detailed";
-import EditSpecies from "./edit-species";
-
 type Species = Database["public"]["Tables"]["species"]["Row"];
 
+<<<<<<< HEAD
 const supabase = createServerSupabaseClient();
 const {
   data: { session },
@@ -19,6 +16,8 @@ if (!session) {
 
 const id = session.user.id ? session.user.id : null;
 
+=======
+>>>>>>> parent of 23cdc5b... good progress
 export default function SpeciesCard(species: Species) {
   return (
     <div className="min-w-72 m-4 w-72 flex-none rounded border-2 p-3 shadow">
@@ -31,7 +30,11 @@ export default function SpeciesCard(species: Species) {
       <h4 className="text-lg font-light italic">{species.scientific_name}</h4>
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
       {/* Replace with detailed view */}
+<<<<<<< HEAD
       <DetailedView species={species} /> {species.author == id && <EditSpecies species={species} />}
+=======
+      <DetailedView species={species} />
+>>>>>>> parent of 23cdc5b... good progress
     </div>
   );
 }
