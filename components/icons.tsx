@@ -10,6 +10,7 @@ import {
   FileText,
   HelpCircle,
   Image,
+  Info,
   Laptop,
   Loader2,
   Moon,
@@ -47,6 +48,7 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  info: Info,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
